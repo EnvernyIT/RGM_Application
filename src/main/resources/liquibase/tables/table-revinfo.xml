@@ -1,0 +1,23 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<!-- Create table -->
+	<changeSet id="1833476869136" author="blu-dots"
+		failOnError="true" onValidationFail="HALT">
+		<!-- If table doesn't not exist -->
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="revinfo" />
+			</not>
+		</preConditions>
+
+		<!-- create table -->
+		<createTable tableName="revinfo">
+			<column name="REV" type="BIGINT"></column>
+			<column name="REVTSTMP" type="BIGINT"></column>
+			<column name="USERNAME" type="VARCHAR(1000)"></column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

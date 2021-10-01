@@ -1,0 +1,45 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	
+	<!-- Create tables -->
+	<changeSet id="1629476869226" author="blu-dots" failOnError="true" 
+		onValidationFail="HALT">
+		<!-- If table doesn't not exist -->
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="REQUESTS_"/>
+			</not>
+		</preConditions>
+		
+		<!-- create table -->
+		<createTable tableName="REQUESTS_">
+			<column name="ID_" type="BIGINT"></column>
+			<column name="EMAIL_" type="VARCHAR(100)"></column>
+			<column name="TOKEN_" type="VARCHAR(1000)"></column>
+			<column name="REQUEST_DATE_TIME_" type="DATETIME"></column>
+		</createTable>
+	</changeSet>
+	
+		<!-- Create tables -->
+	<changeSet id="1629476809826" author="blu-dots" failOnError="true" 
+		onValidationFail="HALT">
+		<!-- If table doesn't not exist -->
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="REQUESTS_AUD"/>
+			</not>
+		</preConditions>
+		
+		<!-- create table -->
+		<createTable tableName="REQUESTS_AUD">
+			<column name="ID_" type="BIGINT"></column>
+			<column name="EMAIL_" type="VARCHAR(100)"></column>
+			<column name="TOKEN_" type="VARCHAR(1000)"></column>
+			<column name="REQUEST_DATE_TIME_" type="DATETIME"></column>
+			<column name="REVISION_TYPE" type="TINYINT"></column>
+			<column name="REV" type="BIGINT"></column>
+		</createTable>
+	</changeSet>
+	
+</databaseChangeLog>
